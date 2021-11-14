@@ -1,5 +1,6 @@
 package com.example.toastimplementation;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button btn=findViewById(R.id.button);
+        Button btn1=findViewById(R.id.button2);
        // Toast toast=Toast.makeText(this,"Toast text",Toast.LENGTH_LONG);
        // toast.show();
         btn.setOnClickListener(new View.OnClickListener() {
@@ -28,6 +30,17 @@ public class MainActivity extends AppCompatActivity {
               showToast();
             }
         });
+btn1.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this);
+        builder.setMessage("Do you want to leave?");
+        builder.setTitle("Alert!");
+        builder.setCancelable(true);
+        AlertDialog alertDialog=builder.create();
+        alertDialog.show();
+    }
+});
 
 
     }
@@ -40,9 +53,8 @@ public class MainActivity extends AppCompatActivity {
         myToast.setView(myLayout);
         myToast.show();
         // ImageView cameraImage=myLayout.findViewById(R.id.imageView);
-      //  TextView myMessage=(TextView) myLayout.findViewById(R.id.textView);
-       // myMessage.setText("My Custom Toast");
-
+        //  TextView myMessage=(TextView) myLayout.findViewById(R.id.textView);
+        // myMessage.setText("My Custom Toast");
         //  myToast.setGravity(Gravity.CENTER,0,0);
 
     }
