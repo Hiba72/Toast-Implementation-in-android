@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-
+String[] colors={"Red","Green","Blue"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,24 +34,7 @@ public class MainActivity extends AppCompatActivity {
 btn1.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this);
-        builder.setMessage("Do you want to leave?");
-        builder.setTitle("Alert!");
-        builder.setCancelable(true);
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                finish();
-            }
-        });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-        AlertDialog alertDialog=builder.create();
-        alertDialog.show();
+       showColors();
     }
 });
 
@@ -71,5 +54,39 @@ btn1.setOnClickListener(new View.OnClickListener() {
         //  myToast.setGravity(Gravity.CENTER,0,0);
 
     }
+    public void showDialog(){
+        AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this);
+        builder.setMessage("Do you want to leave?");
+        builder.setTitle("Alert!");
+        builder.setCancelable(true);
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog alertDialog=builder.create();
+        alertDialog.show();
+    }
+    public void showColors(){
+      AlertDialog.Builder builder1=new AlertDialog.Builder(this);
+      builder1.setTitle("SetColor")
+              .setItems(colors, new DialogInterface.OnClickListener() {
+                  @Override
+                  public void onClick(DialogInterface dialog, int which) {
+                     Toast toast= Toast.makeText(MainActivity.this,colors[which],Toast.LENGTH_SHORT);
+                     toast.show();
+                  }
+              });
+        AlertDialog alertDialog=builder1.create();
+        alertDialog.show();
+    }
+
 
 }
